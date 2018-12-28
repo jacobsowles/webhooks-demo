@@ -1,3 +1,3 @@
 # webhooks-demo
 
-Get a list of your latest GitHub commits using webhooks and serverless Google Cloud Functions
+Get email notifications of new GitHub commits using webhooks and serverless Google Cloud Functions
