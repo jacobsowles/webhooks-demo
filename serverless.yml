@@ -19,8 +19,8 @@ package:
     - .git/**
 
 functions:
-  first:
-    handler: http
+  sendEmail:
+    handler: sendEmail
     events:
       - http: path
   # NOTE: the following uses an "event" event (pubSub event in this case).
