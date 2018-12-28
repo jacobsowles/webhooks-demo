@@ -26,7 +26,7 @@ exports.sendEmail = (request, response) => {
     from: process.env.FROM_EMAIL,
     to: process.env.TO_EMAIL,
     subject: `[${request.body.repository.name}] ${
-      request.body.distinct_size
+      request.body.size
     } new commits by ${request.body.commits[0].author.name}`,
     html: buildCommitList(request.body.commits)
   };
