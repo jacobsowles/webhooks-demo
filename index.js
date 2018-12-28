@@ -26,7 +26,7 @@ exports.sendEmail = (request, response) => {
     from: process.env.FROM_EMAIL,
     to: process.env.TO_EMAIL,
     subject: `[${request.body.repository.name}] ${
-      request.body.size
+      request.body.commits.length
     } new commits by ${request.body.commits[0].author.name}`,
     html: buildCommitList(request.body.commits)
   };
@@ -48,9 +48,10 @@ const buildCommitList = commits => {
   let listString = '<ul style="list-style-type: none; margin: 0; padding: 0">';
 
   commits.forEach(commit => {
-    listString += `<li><a href="${commit.url}">${commit.sha}</a> ${
-      commit.message
-    }</li>`;
+    listString += `<li><a href="${commit.url}">${commit.id.substring(
+      0,
+      7
+    )}</a> ${commit.message}</li>`;
   });
 
   return (listString += "</ul>");
