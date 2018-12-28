@@ -22,12 +22,19 @@ exports.sendEmail = (request, response) => {
     }
   });
 
+  const commitCount = request.body.commits.length;
+  let subject = `[${request.body.repository.name}] ${commitCount} new commit`;
+
+  if (commitCount > 1) {
+    subject += "s";
+  }
+
+  subject += ` by ${request.body.commits[0].author.name}`;
+
   const mailOptions = {
     from: process.env.FROM_EMAIL,
     to: process.env.TO_EMAIL,
-    subject: `[${request.body.repository.name}] ${
-      request.body.commits.length
-    } new commits by ${request.body.commits[0].author.name}`,
+    subject: subject,
     html: buildCommitList(request.body.commits)
   };
 
