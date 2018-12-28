@@ -33,7 +33,7 @@ exports.sendEmail = (request, response) => {
     if (error) {
       response.status(500).json(error);
     } else {
-      response.status(200).send(info);
+      response.status(200).json(info);
     }
   });
 };
