@@ -25,7 +25,7 @@ exports.sendEmail = (request, response) => {
   const mailOptions = {
     from: process.env.FROM_EMAIL,
     to: process.env.TO_EMAIL,
-    subject: buildSubject(request.body.commits, request.repository.name),
+    subject: buildSubject(request.body.commits, request.body.repository.name),
     html: buildCommitList(request.body.commits)
   };
 
